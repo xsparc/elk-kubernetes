@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch-deployment
+  labels:
+    app: elasticsearch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elasticsearch
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+      - name: elasticsearch
+        image: elasticsearch:7.2.0
+        ports:
+        - containerPort: 9200
+      initContainers:
+      - name: sysctl
+        image: busybox
+        command: ["sysctl"]
+        args: ["-w", "vm.max_map_count=262144"]
+        securityContext:
+          privileged: true

@@ -1,9 +1,9 @@
 # elk-kubernetes
 Setup ELK in Kubernetes
 
-## Notes
+## Docker Desktop Notes
 
-### Deploying the Kubernetes Dashboard UI
+### Deploying the Kubernetes Dashboard UI 
 See [documentation](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). To protect your cluster data, Dashboard deploys with a minimal RBAC configuration by default. Currently, Dashboard only supports logging in with a Bearer Token. To create a token for this demo, you can follow our guide on creating a [sample user](https://github.com/kubernetes/dashboard/wiki/Creating-sample-user).
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
@@ -18,6 +18,10 @@ Find admin-user token that was created.
 kubectl -n kube-system describe secret 
 ```
 ### Create deployments
+Create admin-user account when using local deployment.
+```
+kubectl apply -f accounts\dashboard-adminuser.yaml
+```
 ```
 kubectl apply -f controllers\logstash-deployment.yaml
 ```
