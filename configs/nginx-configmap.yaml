@@ -39,11 +39,13 @@ data:
             server_name proxy_logstash;
             #access_log  ${logs/server.access.log} main;
 
-            #location / {
-            #    proxy_pass http://nodea-service.default.svc.cluster.local;
-            #}
-
-            location /node {
+            #location /kibana {
+             location = / { 
+                proxy_pass http://nodec-service.default.svc.cluster.local;
+            }
+            
+            #location /node {
+            location = /node {
                 proxy_pass http://nodea-service.default.svc.cluster.local;
             }
             

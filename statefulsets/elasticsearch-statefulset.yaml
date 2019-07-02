@@ -82,8 +82,10 @@ spec:
 
           # spec.template.spec.containers[elasticsearch].env
           env:
-            - name: discovery.seed_hosts
-              value: "elasticsearch.default.svc.cluster.local"
+            #- name: discovery.seed_hosts
+            #  value: "nodeb-service.default.svc.cluster.local"
+            - name: discovery.type
+              value: "single-node"
             #- name: cluster.initial_master_nodes
             #  value: "elasticsearch-master-0,elasticsearch-master-1,elasticsearch-master-2"
             - name: ES_JAVA_OPTS

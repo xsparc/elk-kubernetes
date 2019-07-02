@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana
+  labels:
+    app: kibana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kibana
+  template:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+        - name: kibana
+          image: docker.elastic.co/kibana/kibana:7.2.0
+          ports:
+            - containerPort: 5601
+          env:
+            #- name: SERVER_NAME
+            #  valueFrom:
+            #    fieldRef:
+            #      fieldPath: metadata.name
+            #- name: SERVER_HOST
+            #  value: "0.0.0.0"
+            - name: ELASTICSEARCH_HOSTS
+              value: http://nodeb-service.default.svc.cluster.local:9200
