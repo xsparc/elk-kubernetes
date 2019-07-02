@@ -19,12 +19,19 @@ spec:
         image: logstash:7.2.0
         ports:
         - containerPort: 8080
+        volumeMounts: 
+        - name: logstash-volume
+          mountPath: /usr/share/logstash/pipeline/
         env:
         - name: XPACK_MONITORING_ENABLED
           value: "true"
         - name: XPACK_MONITORING_ELASTICSEARCH_URL
-          value: "http://nodea-service.default.svc.cluster.local:9200"
+          value: "http://nodeb-service.default.svc.cluster.local:9200"
         - name: XPACK_MONITORING_ELASTICSEARCH_USERNAME
           value: "elastic"  
         - name: XPACK_MONITORING_ELASTICSEARCH_PASSWORD
           value: "changeme"
+      volumes:
+      - name: logstash-volume
+        configMap: 
+          name: logstash-configmap

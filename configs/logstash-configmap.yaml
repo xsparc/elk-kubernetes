@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logstash-configmap
+data:
+
+  logstash.conf: |
+    # Most configuration is taken from the examples at
+    # https://www.elastic.co/guide/en/logstash/6.3/logstash-config-for-filebeat-modules.html
+    input { 
+      http {
+        port => 8080
+      }
+    } 
+
+    output { 
+      elasticsearch {
+          hosts => ["http://nodeb-service.default.svc.cluster.local:9200"]
+          user => "elastic"
+          password => "changeme"
+          index => "logstash-%{+YYYY.MM.dd}"
+
+      }
+      stdout {
+          codec => rubydebug  
+      }
+    }
