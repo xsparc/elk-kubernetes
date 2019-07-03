@@ -27,4 +27,10 @@ spec:
             #- name: SERVER_HOST
             #  value: "0.0.0.0"
             - name: ELASTICSEARCH_HOSTS
-              value: http://nodeb-service.default.svc.cluster.local:9200
+              value: http://elasticsearch-stateful.default.svc.cluster.local:9200
+            - name: ELASTICSEARCH_USERNAME
+              value: "elastic"
+            - name: ELASTICSEARCH_PASSWORD
+              value: "changeme"
+            - name: XPACK_LICENSE_MANAGEMENT_ENABLED
+              value: "false"

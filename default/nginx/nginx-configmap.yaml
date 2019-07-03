@@ -43,10 +43,10 @@ data:
              location = / { 
                 proxy_pass http://nodec-service.default.svc.cluster.local;
             }
-            
+
             #location /node {
             location = /node {
-                proxy_pass http://nodea-service.default.svc.cluster.local;
+                proxy_pass http://logstash-service.default.svc.cluster.local;
             }
             
         }
