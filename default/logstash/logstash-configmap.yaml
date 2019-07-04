@@ -13,14 +13,20 @@ data:
       }
     } 
 
-    output { 
-      elasticsearch {
-          hosts => ["http://nodeb-service.default.svc.cluster.local:9200"]
-          user => "elastic"
-          password => "changeme"
-          index => "logstash-%{+YYYY.MM.dd}"
+    #output { 
+    #  elasticsearch {
+    #      hosts => ["http://nodeb-service.default.svc.cluster.local:9200"]
+    #      user => "elastic"
+    #      password => "changeme"
+    #      index => "logstash-%{+YYYY.MM.dd}"
+    #  }
+    output {
+          elasticsearch {
+              hosts => ["http://elasticsearch-stateful.default.svc.cluster.local:9200"]
+              manage_template => false
+              #index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+          }
 
-      }
       stdout {
           codec => rubydebug  
       }

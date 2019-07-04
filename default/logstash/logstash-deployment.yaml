@@ -26,7 +26,7 @@ spec:
         - name: XPACK_MONITORING_ENABLED
           value: "true"
         - name: XPACK_MONITORING_ELASTICSEARCH_URL
-          value: "http://nodeb-service.default.svc.cluster.local:9200"
+          value: "http://elasticsearch-stateful.default.svc.cluster.local:9200"
         - name: XPACK_MONITORING_ELASTICSEARCH_USERNAME
           value: "elastic"  
         - name: XPACK_MONITORING_ELASTICSEARCH_PASSWORD
