@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodec-service
+  name: frontend-portal
 spec:
   selector:
     app: kibana
