@@ -13,6 +13,12 @@ data:
       }
     } 
 
+    filter{
+      json{
+        source => "message"        
+      }
+    }
+
     #output { 
     #  elasticsearch {
     #      hosts => ["http://nodeb-service.default.svc.cluster.local:9200"]
