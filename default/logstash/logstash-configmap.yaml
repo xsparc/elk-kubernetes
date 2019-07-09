@@ -14,8 +14,14 @@ data:
     } 
 
     filter{
-      json{
-        source => "message"        
+      #json{
+      #  source => "message"        
+      #}
+      #csv{
+      #
+      #}
+      kv {
+        value_split => ":"
       }
     }
 
