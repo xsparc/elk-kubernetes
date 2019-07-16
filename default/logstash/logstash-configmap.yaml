@@ -14,15 +14,24 @@ data:
     } 
 
     filter{
-      #json{
-      #  source => "message"        
+      #mutate{
+          #remove_field => [ "\"Ptr\":" ]
+      #    gsub => ["message", "\"Ptr\":", ""]
       #}
+
+      json{
+        source => "message"        
+      }
       #csv{
       #
       #}
-      kv {
-        value_split => ":"
-      }
+      #xml {
+      #  source => "message"
+      #  target => "doc"
+      #}
+      #kv {
+      #  value_split => ":"
+      #}
     }
 
     #output { 
